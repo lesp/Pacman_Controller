@@ -22,6 +22,7 @@ const int UP = 4;          // input pin for pushbutton
 const int DOWN = 5;
 const int LEFT = 6;
 const int RIGHT = 7;
+const int FIRE = 8;
 //int previousButtonState = HIGH;   // for checking the state of a pushButton
 int counter = 0;                  // button push counter
 
@@ -31,6 +32,7 @@ void setup() {
   pinMode(DOWN, INPUT);
   pinMode(LEFT, INPUT);
   pinMode(RIGHT, INPUT);
+  pinMode(FIRE, INPUT);
   // initialize control over the keyboard:
   Keyboard.begin();
 }
@@ -53,6 +55,11 @@ else if (digitalRead(LEFT) == HIGH) {
 }  
 else if (digitalRead(RIGHT) == HIGH) {
   Keyboard.press(KEY_RIGHT_ARROW);
+  delay(200);
+  Keyboard.releaseAll();
+}  
+else if (digitalRead(FIRE) == HIGH) {
+  Keyboard.press(KEY_LEFT_CTRL);
   delay(200);
   Keyboard.releaseAll();
 }  
